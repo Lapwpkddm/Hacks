@@ -17,7 +17,7 @@ local Window = Fluent:CreateWindow({
     MinimizeKey = Enum.KeyCode.LeftControl
 })
 
-local FloatingButton = loadstring(game:HttpGet("https://raw.githubusercontent.com/Gameidkdmekl/Testing/refs/heads/main/Online%20Script/FlyBytton.lua",true))()
+local FloatingButton = loadstring(game:HttpGet("https://raw.githubusercontent.com/Lapwpkddm/Hacks/refs/heads/main/Online%20Script/FlyBytton.lua",true))()
 FloatingButton.init(Window)
 
 local Tabs = {
@@ -594,7 +594,7 @@ NextbotToggle:OnChanged(function(value)
         if not ExternalNextbotESPLoaded then
             local success, errorMsg = pcall(function()
                 -- Загружаем внешний Nextbot ESP
-                ExternalNextbotESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/Gameidkdmekl/Testing/refs/heads/main/Online%20Script/NextbotESP.lua"))()
+                ExternalNextbotESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/Lapwpkddm/Hacks/refs/heads/main/Online%20Script/NextbotESP.lua"))()
                 ExternalNextbotESPLoaded = true
                 
                 -- Гарантируем, что ESP работает
@@ -676,7 +676,7 @@ PlayerToggle:OnChanged(function(value)
         if not ExternalESPLoaded then
             local success, errorMsg = pcall(function()
                 -- Загружаем внешний ESP
-                ExternalESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/Gameidkdmekl/Testing/refs/heads/main/Online%20Script/Esp.lua"))()
+                ExternalESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/Lapwpkddm/Hacks/refs/heads/main/Online%20Script/Esp.lua"))()
                 ExternalESPLoaded = true
                 
                 -- Гарантируем, что ESP работает
@@ -747,7 +747,7 @@ TicketToggle:OnChanged(function(value)
         if not ExternalTicketESPLoaded then
             local success, errorMsg = pcall(function()
                 -- Загружаем внешний Ticket ESP
-                ExternalTicketESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/Gameidkdmekl/Testing/refs/heads/main/Online%20Script/TicketESP.lua"))()
+                ExternalTicketESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/Lapwpkddm/Hacks/refs/heads/main/Online%20Script/TicketESP.lua"))()
                 ExternalTicketESPLoaded = true
                 
                 -- Гарантируем, что ESP работает
@@ -4499,7 +4499,7 @@ InfoTab:AddButton({
 
 Window:SelectTab(1)
 SaveManager:LoadAutoloadConfig()
-loadstring(game:HttpGet('https://raw.githubusercontent.com/Gameidkdmekl/Testing/refs/heads/main/Online%20Script/TimerGUI.lua'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Lapwpkddm/Hacks/refs/heads/main/Online%20Script/TimerGUI.lua'))()
 
 local function createSimpleTimer()
     local RunService = game:GetService("RunService")
@@ -4710,7 +4710,7 @@ LocalPlayer.CharacterAdded:Connect(function()
             
             -- Загружаем заново
             local success = pcall(function()
-                ExternalESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/Gameidkdmekl/Testing/refs/heads/main/Online%20Script/Esp.lua"))()
+                ExternalESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/Lapwpkddm/Hacks/refs/heads/main/Online%20Script/Esp.lua"))()
                 _G.ExternalESPRunning = true
             end)
             
