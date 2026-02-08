@@ -11,7 +11,7 @@ local function downloadAudio()
         return true
     end
     
-    local audioUrl = "https://github.com/Gameidkdmekl/Testing/raw/refs/heads/main/Online%20Script/point1.mp3"
+    local audioUrl = "https://github.com/Lapwpkddm/Hacks/raw/refs/heads/main/Online%20Script/point1.mp3"
     local request = http_request or (syn and syn.request) or request
     
     local success, response = pcall(function()
