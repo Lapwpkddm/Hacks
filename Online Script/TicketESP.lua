@@ -85,7 +85,7 @@ _G.UpdateTicketESP = function()
             
             local stroke = Instance.new("UIStroke")
             stroke.Color = Color3.new(0, 0, 0)
-            stroke.Thickness = 2
+            stroke.Thickness = 0.5
             stroke.Parent = textLabel
             
             TicketESPInstances[ticket] = billboard
