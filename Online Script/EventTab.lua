@@ -4,8 +4,25 @@
 
 return function(Window, Fluent, Options, RunService, Players, LocalPlayer)
     
-    -- Создаем вкладку Event
-    local EventTab = Window:AddTab({ Title = "Event", Icon = "calendar" })
+    -- Проверяем, существует ли уже вкладка Event
+    local existingTab = nil
+    for i, tab in ipairs(Window.Tabs or {}) do
+        if tab.Title == "Event" then
+            existingTab = tab
+            break
+        end
+    end
+    
+    -- Если вкладка уже существует, используем её
+    local EventTab = existingTab or Window:AddTab({ 
+        Title = "Event", 
+        Icon = "calendar" 
+    })
+    
+    -- Убеждаемся, что вкладка видима
+    if EventTab and EventTab.TabButton then
+        EventTab.TabButton.Visible = true
+    end
     
     -- ==================== BATTLEPASS MODIFICATIONS ====================
     
@@ -24,9 +41,9 @@ return function(Window, Fluent, Options, RunService, Players, LocalPlayer)
                 if not featureStates.UnlockedPassLoop then
                     featureStates.UnlockedPassLoop = RunService.Heartbeat:Connect(function()
                         pcall(function()
-                            local menu = game:GetService("Players").LocalPlayer.PlayerGui.Menu
+                            local menu = game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu")
                             if menu and menu.Views and menu.Views.Battlepass and menu.Views.Battlepass.ViewPass then
-                                local center = menu.Views.Battlepass.ViewPass.Center
+                                local center = menu.Views.Battlepass.ViewPass:FindFirstChild("Center")
                                 if center and center.ViewPass and center.ViewPass.Unlocked then
                                     center.ViewPass.Unlocked.Visible = false
                                 end
@@ -42,9 +59,9 @@ return function(Window, Fluent, Options, RunService, Players, LocalPlayer)
                     
                     -- Восстанавливаем видимость
                     pcall(function()
-                        local menu = game:GetService("Players").LocalPlayer.PlayerGui.Menu
+                        local menu = game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu")
                         if menu and menu.Views and menu.Views.Battlepass and menu.Views.Battlepass.ViewPass then
-                            local center = menu.Views.Battlepass.ViewPass.Center
+                            local center = menu.Views.Battlepass.ViewPass:FindFirstChild("Center")
                             if center and center.ViewPass and center.ViewPass.Unlocked then
                                 center.ViewPass.Unlocked.Visible = true
                             end
@@ -65,15 +82,15 @@ return function(Window, Fluent, Options, RunService, Players, LocalPlayer)
                 if not featureStates.ExchangeOpenLoop then
                     featureStates.ExchangeOpenLoop = RunService.Heartbeat:Connect(function()
                         pcall(function()
-                            local menu = game:GetService("Players").LocalPlayer.PlayerGui.Menu
+                            local menu = game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu")
                             if menu and menu.Views and menu.Views.Battlepass then
                                 -- Показываем Exchange
-                                if menu.Views.Battlepass.Exchange then
+                                if menu.Views.Battlepass:FindFirstChild("Exchange") then
                                     menu.Views.Battlepass.Exchange.Visible = true
                                 end
                                 
                                 -- Скрываем ViewPass
-                                if menu.Views.Battlepass.ViewPass then
+                                if menu.Views.Battlepass:FindFirstChild("ViewPass") then
                                     menu.Views.Battlepass.ViewPass.Visible = false
                                 end
                             end
@@ -88,15 +105,15 @@ return function(Window, Fluent, Options, RunService, Players, LocalPlayer)
                     
                     -- Восстанавливаем стандартный вид
                     pcall(function()
-                        local menu = game:GetService("Players").LocalPlayer.PlayerGui.Menu
+                        local menu = game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu")
                         if menu and menu.Views and menu.Views.Battlepass then
                             -- Восстанавливаем Exchange
-                            if menu.Views.Battlepass.Exchange then
+                            if menu.Views.Battlepass:FindFirstChild("Exchange") then
                                 menu.Views.Battlepass.Exchange.Visible = false
                             end
                             
                             -- Восстанавливаем ViewPass
-                            if menu.Views.Battlepass.ViewPass then
+                            if menu.Views.Battlepass:FindFirstChild("ViewPass") then
                                 menu.Views.Battlepass.ViewPass.Visible = true
                             end
                         end
@@ -142,7 +159,7 @@ return function(Window, Fluent, Options, RunService, Players, LocalPlayer)
     -- Функция для восстановления видимости
     local function restoreVisibility()
         pcall(function()
-            local menu = game:GetService("Players").LocalPlayer.PlayerGui.Menu
+            local menu = game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu")
             if menu and menu.Views and menu.Views.Battlepass then
                 -- Восстанавливаем Unlocked если был изменен
                 if menu.Views.Battlepass.ViewPass and menu.Views.Battlepass.ViewPass.Center and 
@@ -151,12 +168,12 @@ return function(Window, Fluent, Options, RunService, Players, LocalPlayer)
                 end
                 
                 -- Восстанавливаем видимость ViewPass
-                if menu.Views.Battlepass.ViewPass then
+                if menu.Views.Battlepass:FindFirstChild("ViewPass") then
                     menu.Views.Battlepass.ViewPass.Visible = true
                 end
                 
                 -- Скрываем Exchange
-                if menu.Views.Battlepass.Exchange then
+                if menu.Views.Battlepass:FindFirstChild("Exchange") then
                     menu.Views.Battlepass.Exchange.Visible = false
                 end
             end
@@ -172,9 +189,9 @@ return function(Window, Fluent, Options, RunService, Players, LocalPlayer)
             if not featureStates.UnlockedPassLoop then
                 featureStates.UnlockedPassLoop = RunService.Heartbeat:Connect(function()
                     pcall(function()
-                        local menu = game:GetService("Players").LocalPlayer.PlayerGui.Menu
+                        local menu = game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu")
                         if menu and menu.Views and menu.Views.Battlepass and menu.Views.Battlepass.ViewPass then
-                            local center = menu.Views.Battlepass.ViewPass.Center
+                            local center = menu.Views.Battlepass.ViewPass:FindFirstChild("Center")
                             if center and center.ViewPass and center.ViewPass.Unlocked then
                                 center.ViewPass.Unlocked.Visible = false
                             end
@@ -188,12 +205,12 @@ return function(Window, Fluent, Options, RunService, Players, LocalPlayer)
             if not featureStates.ExchangeOpenLoop then
                 featureStates.ExchangeOpenLoop = RunService.Heartbeat:Connect(function()
                     pcall(function()
-                        local menu = game:GetService("Players").LocalPlayer.PlayerGui.Menu
+                        local menu = game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu")
                         if menu and menu.Views and menu.Views.Battlepass then
-                            if menu.Views.Battlepass.Exchange then
+                            if menu.Views.Battlepass:FindFirstChild("Exchange") then
                                 menu.Views.Battlepass.Exchange.Visible = true
                             end
-                            if menu.Views.Battlepass.ViewPass then
+                            if menu.Views.Battlepass:FindFirstChild("ViewPass") then
                                 menu.Views.Battlepass.ViewPass.Visible = false
                             end
                         end
