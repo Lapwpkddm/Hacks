@@ -115,7 +115,7 @@ mobileBtn.Name = "MobileButton"
 mobileBtn.Size = UDim2.new(0, 120, 0, 40)
 mobileBtn.Position = UDim2.new(0, 160, 0.5, -20)
 mobileBtn.BackgroundColor3 = Color3.fromRGB(0, 150, 255) -- Синий для выбранного
-mobileBtn.Text = "📱Mobile/PC"
+mobileBtn.Text = "👑 Overhaul"
 mobileBtn.Font = Enum.Font.SourceSansBold
 mobileBtn.TextSize = 24
 mobileBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -131,7 +131,7 @@ pcBtn.Name = "PCButton"
 pcBtn.Size = UDim2.new(0, 120, 0, 40)
 pcBtn.Position = UDim2.new(0, 300, 0.5, -20)
 pcBtn.BackgroundColor3 = Color3.fromRGB(100, 100, 100) -- Серый для невыбранного
-pcBtn.Text = "🖥️ PC (Xeno)"
+pcBtn.Text = "🌟 Legacy(Soon)"
 pcBtn.Font = Enum.Font.SourceSansBold
 pcBtn.TextSize = 24
 pcBtn.TextColor3 = Color3.fromRGB(200, 200, 200)
@@ -601,7 +601,7 @@ local function executeScript()
         if selectedPlatform == "Mobile" then
             loadstring(game:HttpGet("https://raw.githubusercontent.com/Lapwpkddm/Hacks/refs/heads/main/Online%20Script/ScriptMobile.lua"))()
         else -- PC
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/Lapwpkddm/Hacks/refs/heads/main/Online%20Script/ScriptPC.lua"))()
+            loadstring(game:HttpGet(""))()
         end
     end)
     
